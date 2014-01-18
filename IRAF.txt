@@ -71,4 +71,3 @@ Edit these lines and set as below:
     set	min_lenuserarea	= 64000
     set	imtype		= "imh"
     set	imextn		= "oif:imh fxf:fits,fit fxb:fxb plf:pl qpf:qp stf:hhh,??h"
-
