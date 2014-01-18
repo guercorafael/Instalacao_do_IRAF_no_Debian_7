@@ -1,0 +1,74 @@
+==============
+IRAF
+==============
+$ sudo adduser iraf
+$ sudo aptitude install csh tcsh libxss1 libncurses5
+$ sudo ln -s /usr/lib/libncurses.so /usr/lib/libtermcap.so.2
+
+iraf:x:1001:1001:,,,:/iraf/iraf/local:/bin/csh
+
+$ sudo mkdir /usr/local/iraf-2.15
+$ sudo chown iraf /usr/local/iraf-2.15
+$ sudo chgrp iraf /usr/local/iraf-2.15
+$ sudo ln -s /usr/local/iraf-2.15 /iraf
+$ cd /iraf
+$ su iraf
+... as user iraf ...
+$ chsh
+... enter /bin/csh to change to csh ...
+$ mkdir bin imdirs iraf
+
+$ cd /iraf/iraf
+$ wget ftp://iraf.noao.edu/iraf/v215/PCIX/iraf.lnux.x86_64.gz
+$ tar -xvzf iraf.lnux.x86_64.gz
+$ su
+... as root ...
+# iraf=/iraf/iraf   # defining $iraf; csh user might do differently...
+# $iraf/unix/hlib/install
+
+43. mkdir /usr/local/src/x11iraf
+44. cd /usr/local/src/x11iraf
+45. wget http://iraf.net/ftp/iraf/x11iraf/x11iraf-v1.5DEV-bin.redhat.tar.gz
+46. tar -vzxf x11iraf-v1.5DEV-bin.redhat.tar.gz
+47. ./install
+48. exit
+49. change to normal user
+50. mkiraf
+51. xgterm &
+52. ds9 &
+53. cl
+
+You will probably want to setup the |login.cl| file so that the default
+image format is FITS, and change the width of the FITS viewer to a more
+comfortable size. Find the following section in |login.cl|:
+
+Uncomment and edit to change the defaults:
+
+    #set	editor		= vi
+    #set	printer		= lp
+    #set	pspage		= "letter"
+    #set	stdimage	= imt800
+    #set	stdimcur	= stdimage
+    #set	stdplot		= lw
+    #set	clobber		= no
+    #set	filewait	= yes
+    #set	cmbuflen	= 512000
+    #set	min_lenuserarea	= 64000
+    #set	imtype		= "imh"
+    set	        imextn		= "oif:imh fxf:fits,fit fxb:fxb plf:pl qpf:qp stf:hhh,??h"
+
+Edit these lines and set as below:
+
+    set	editor		= vi
+    set	printer		= lp
+    set	pspage		= "letter"
+    set	stdimage	= imt1024
+    set	stdimcur	= stdimage
+    set	stdplot		= lw
+    set	clobber		= no
+    set	filewait	= yes
+    set	cmbuflen	= 512000
+    set	min_lenuserarea	= 64000
+    set	imtype		= "imh"
+    set	imextn		= "oif:imh fxf:fits,fit fxb:fxb plf:pl qpf:qp stf:hhh,??h"
+
